@@ -419,18 +419,19 @@ button {
 
 /* --- Mobile Drawer Backdrop --- */
 .mobile-drawer-backdrop {
-  display: none;
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 200;
   opacity: 0;
+  pointer-events: none;       /* invisible AND non-interactive when closed */
   transition: opacity var(--transition-normal);
   backdrop-filter: blur(2px);
 }
 
 .mobile-drawer-backdrop.open {
   opacity: 1;
+  pointer-events: auto;       /* only intercepts taps when actually open */
 }
 
 /* --- Mobile Side Drawer --- */
@@ -572,8 +573,7 @@ button {
     padding: 0.7rem 1rem;
   }
 
-  /* Show drawer backdrop when open */
-  .mobile-drawer-backdrop { display: block; }
+  /* Backdrop: already in DOM, just non-interactive until opened (pointer-events handles this) */
 
   .footer-container {
     grid-template-columns: 1fr;
