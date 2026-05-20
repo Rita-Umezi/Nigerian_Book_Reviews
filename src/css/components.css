@@ -1604,32 +1604,229 @@
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* Responsive adjustment for chatbot window */
+/* --- 10. Complete Responsive Media Queries --- */
+
+/* Tablet & Mobile Layouts (<768px) */
+@media (max-width: 768px) {
+  /* Hero Carousel Scaling */
+  .hero-section {
+    height: 250px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .slide {
+    padding: 1.5rem 2rem;
+    justify-content: center;
+  }
+  
+  .slide-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .slide-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .slide-content .btn {
+    display: inline-flex;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    margin: 0 auto;
+  }
+  
+  .slide-graphic {
+    display: none;
+  }
+  
+  .slider-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  /* Discover Toolbar Stacking */
+  .discover-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-wrapper {
+    width: 100%;
+  }
+
+  /* Book Detail Stacking */
+  .book-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .detail-sidebar {
+    align-items: center;
+  }
+  
+  .detail-cover {
+    max-width: 220px;
+  }
+  
+  .detail-actions {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .book-title-header {
+    text-align: center;
+  }
+
+  .book-title-header h1 {
+    font-size: 2rem;
+  }
+  
+  .book-meta-sub {
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .detail-badge-row {
+    justify-content: center;
+  }
+}
+
+/* Small Mobile Layouts (<600px) */
+@media (max-width: 600px) {
+  /* Three books per row on mobile */
+  .books-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .book-card {
+    padding: 0.4rem;
+    border-radius: var(--border-radius-sm);
+  }
+  
+  .book-cover-wrapper {
+    margin-bottom: 0.4rem;
+  }
+  
+  /* Cover Badges Scaling */
+  .category-badge-overlay {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.25rem;
+    top: 0.2rem;
+    right: 0.2rem;
+  }
+  
+  .category-rank-badge {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.25rem;
+    bottom: 0.2rem;
+    left: 0.2rem;
+  }
+  
+  /* Fallback Dynamic CSS Cover Fonts */
+  .book-cover-art {
+    padding: 0.4rem;
+  }
+  
+  .cover-publisher {
+    font-size: 0.45rem;
+  }
+  
+  .cover-title {
+    font-size: 0.6rem;
+  }
+  
+  .cover-author {
+    font-size: 0.5rem;
+  }
+  
+  /* Card Info Scaling */
+  .book-publisher-label {
+    display: none; /* Hide publisher to save vertical space */
+  }
+  
+  .book-card-title {
+    font-size: 0.75rem;
+    line-height: 1.1;
+    height: 2.2em; /* Restrict height to maintain grid symmetry */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.1rem;
+  }
+  
+  .book-card-author {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.25rem;
+  }
+  
+  .stars-display {
+    gap: 0.05rem;
+    flex-wrap: wrap;
+  }
+  
+  .stars-display .star-icon {
+    font-size: 0.55rem;
+  }
+  
+  .stars-display .rating-value {
+    font-size: 0.65rem;
+    margin-left: 0.1rem;
+  }
+  
+  .stars-display .reviews-count {
+    display: none; /* Hide count to avoid wrapping issues */
+  }
+}
+
+/* Tiny Mobile Layouts (<480px) */
 @media (max-width: 480px) {
   .ai-chat-window {
     width: calc(100vw - 2rem);
     height: 420px;
   }
+  
   .ai-chat-widget {
     bottom: 1rem;
     right: 1rem;
   }
+  
   .rating-breakdown-card {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+  
   .breakdown-overall {
     border-right: none;
     border-bottom: 1px solid var(--border-color);
     padding-right: 0;
     padding-bottom: 1.5rem;
   }
+  
   .profile-card {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 1.5rem;
   }
+  
   .profile-avatar-area {
     margin-bottom: 0.5rem;
+  }
+  
+  .profile-stats-grid {
+    gap: 0.6rem;
   }
 }
