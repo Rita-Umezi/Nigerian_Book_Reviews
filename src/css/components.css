@@ -301,6 +301,18 @@
   perspective: 1000px;
 }
 
+/* Original Book Cover Image style */
+.book-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-left: 3px solid rgba(0,0,0,0.3);
+}
+
 /* Modern CSS Rendered Book Cover */
 .book-cover-art {
   width: 100%;

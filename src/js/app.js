@@ -434,8 +434,9 @@ const App = {
         <article class="book-card" data-id="${book.id}">
           <a href="#book/${book.id}">
             <div class="book-cover-wrapper">
+              <img src="src/assets/covers/${book.id}.jpg" class="book-cover-img" onerror="this.style.display='none';" alt="${book.title} Cover">
+              <div class="book-cover-spine"></div>
               <div class="book-cover-art" style="background: ${book.coverColor}">
-                <div class="book-cover-spine"></div>
                 <span class="cover-publisher">${book.publisher.replace("Books", "")}</span>
                 <h4 class="cover-title">${book.title}</h4>
                 <span class="cover-author">${book.author}</span>
@@ -510,8 +511,9 @@ const App = {
         <article class="book-card">
           <a href="#book/${book.id}">
             <div class="book-cover-wrapper">
+              <img src="src/assets/covers/${book.id}.jpg" class="book-cover-img" onerror="this.style.display='none';" alt="${book.title} Cover">
+              <div class="book-cover-spine"></div>
               <div class="book-cover-art" style="background: ${book.coverColor}">
-                <div class="book-cover-spine"></div>
                 <span class="cover-publisher">${book.publisher.replace("Books", "")}</span>
                 <h4 class="cover-title">${book.title}</h4>
                 <span class="cover-author">${book.author}</span>
@@ -564,9 +566,10 @@ const App = {
       <section class="book-detail-layout">
         <!-- Sidebar cover column -->
         <div class="detail-sidebar">
-          <div class="detail-cover">
+          <div class="detail-cover" style="position: relative;">
+            <img src="src/assets/covers/${book.id}.jpg" class="book-cover-img" onerror="this.style.display='none';" alt="${book.title} Cover">
+            <div class="book-cover-spine"></div>
             <div class="book-cover-art" style="background: ${book.coverColor}; height: 100%;">
-              <div class="book-cover-spine"></div>
               <span class="cover-publisher" style="font-size:0.9rem;">${book.publisher.replace("Books", "")}</span>
               <h2 class="cover-title" style="font-size:1.8rem; margin:auto 0; text-shadow:0 3px 6px rgba(0,0,0,0.5);">${book.title}</h2>
               <span class="cover-author" style="font-size:1.1rem;">${book.author}</span>
@@ -911,8 +914,9 @@ const App = {
             <article class="book-card">
               <a href="#book/${book.id}">
                 <div class="book-cover-wrapper">
+                  <img src="src/assets/covers/${book.id}.jpg" class="book-cover-img" onerror="this.style.display='none';" alt="${book.title} Cover">
+                  <div class="book-cover-spine"></div>
                   <div class="book-cover-art" style="background: ${book.coverColor}">
-                    <div class="book-cover-spine"></div>
                     <h4 class="cover-title">${book.title}</h4>
                     <span class="cover-author">${book.author}</span>
                   </div>
