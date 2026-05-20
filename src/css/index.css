@@ -1,0 +1,416 @@
+/* --- Global Style Variables & Theme Schemes --- */
+:root {
+  /* Common Core Styles */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --max-width: 1200px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 24px;
+  
+  /* System Colors */
+  --star-gold: #F59E0B;
+  --success-green: #10B981;
+  --danger-red: #EF4444;
+}
+
+/* 1. Light Slate Theme (Modern Sky Blue & Slate) */
+[data-theme="light"] {
+  --bg-primary: #E0F2FE; /* Sky Blue tinted background matching mock */
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F8FAFC;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --accent-color: #0284C7; /* Royal Blue */
+  --accent-hover: #0369A1;
+  --accent-light: #E0F2FE;
+  --border-color: #E2E8F0;
+  --shadow-color: rgba(15, 23, 42, 0.06);
+  --shadow-hover: rgba(15, 23, 42, 0.12);
+  --badge-bg: #E0F2FE;
+  --badge-text: #0369A1;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --scrollbar-thumb: #CBD5E1;
+}
+
+/* 2. Editorial Terracotta Theme (Warm Cream, Earthy Clay & Vintage Literary Paper) */
+[data-theme="editorial"] {
+  --bg-primary: #F7EFE2; /* Rich warm book paper cream */
+  --bg-secondary: #FFFDF9; /* Vintage off-white */
+  --bg-tertiary: #EADCC6; /* Warm earth border-accent */
+  --text-primary: #2C1E14; /* Deep dark cocoa text */
+  --text-secondary: #6B4E37; /* Warm bark brown */
+  --text-muted: #9C8573;
+  --accent-color: #D35400; /* Rich Terracotta Orange (inspired by publishers like Masobe) */
+  --accent-hover: #A04000;
+  --accent-light: #FCE8D5;
+  --border-color: #EADCC6;
+  --shadow-color: rgba(107, 78, 55, 0.08);
+  --shadow-hover: rgba(107, 78, 55, 0.15);
+  --badge-bg: #FCE8D5;
+  --badge-text: #D35400;
+  --glass-bg: rgba(255, 253, 249, 0.9);
+  --glass-border: rgba(211, 84, 0, 0.1);
+  --scrollbar-thumb: #D8C3A5;
+}
+
+/* 3. Midnight Dark Theme (Sleek Charcoal & Neon Orange/Gold Accents) */
+[data-theme="dark"] {
+  --bg-primary: #0F172A; /* Deep Dark Space Slate */
+  --bg-secondary: #1E293B; /* Slate Gray Card Backing */
+  --bg-tertiary: #334155;
+  --text-primary: #F1F5F9; /* Off-white text */
+  --text-secondary: #94A3B8; /* Muted Slate Text */
+  --text-muted: #64748B;
+  --accent-color: #F59E0B; /* Vibrant Gold Amber */
+  --accent-hover: #D97706;
+  --accent-light: #332103;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-hover: rgba(0, 0, 0, 0.6);
+  --badge-bg: #451A03;
+  --badge-text: #F59E0B;
+  --glass-bg: rgba(30, 41, 59, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --scrollbar-thumb: #475569;
+}
+
+/* --- Base Layout Resets --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
+}
+
+/* --- Scrollbar Customization --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  transition: all var(--transition-fast);
+}
+
+/* --- Core Layout Containers --- */
+.main-content {
+  flex: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem 1.5rem;
+  opacity: 1;
+  transition: opacity var(--transition-normal);
+}
+
+.main-content.fade-out {
+  opacity: 0;
+}
+
+/* --- App Header / Navigation CSS --- */
+.app-header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+}
+
+.logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.logo-text .highlight {
+  color: var(--accent-color);
+}
+
+/* Navigation Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.5rem 0.2rem;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--accent-color);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* Actions Area */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Theme Switcher Button Group */
+.theme-switcher {
+  display: flex;
+  background-color: var(--bg-tertiary);
+  padding: 4px;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.theme-btn:hover {
+  color: var(--accent-color);
+}
+
+.theme-btn.active {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Profile Badge in Header */
+.header-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius-lg);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.header-profile-badge:hover {
+  border-color: var(--accent-color);
+  background-color: var(--bg-secondary);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.avatar-sm {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  border: 1px solid var(--border-color);
+}
+
+.badge-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.user-name-abbr {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-rank-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- Global Footer Styles --- */
+.app-footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 1.5rem 1.5rem 1.5rem;
+  margin-top: auto;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.footer-brand h4 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer-brand h4 .highlight {
+  color: var(--accent-color);
+}
+
+.footer-brand p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 400px;
+}
+
+.footer-links h5, .footer-publishers h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+  transform: translateX(3px);
+}
+
+.footer-publishers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-publishers span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .nav-menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1.2rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .main-content {
+    padding: 1rem 1rem 3rem 1rem;
+  }
+}
