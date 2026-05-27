@@ -29,6 +29,12 @@ const App = {
     // 4. Bind Global Listeners (Header Profile, Modal Triggers)
     this.bindGlobalEvents();
     this.updateHeaderProfile();
+
+    // 5. Re-render header whenever auth changes
+    window.addEventListener("auth-changed", () => {
+      initStore(); // re-initialize per-user store keys
+      this.updateHeaderProfile();
+    });
   },
 
   // --- Theme Management ---
@@ -122,16 +128,30 @@ const App = {
   },
 
   updateHeaderProfile() {
-    const profile = ProfileStore.get();
-    const stats = ProfileStore.getStats();
-    
-    const headerAvatar = document.getElementById("header-avatar");
-    const headerNick = document.getElementById("header-nickname");
-    const headerRank = document.getElementById("header-rank");
-    
-    if (headerAvatar) headerAvatar.src = profile.avatar;
-    if (headerNick) headerNick.textContent = profile.nickname;
-    if (headerRank) headerRank.textContent = stats.rank;
+    const signedIn       = AuthStore.isSignedIn();
+    const signInBtn      = document.getElementById("header-sign-in-btn");
+    const profileBadge   = document.getElementById("header-profile-badge");
+    const signOutBtn     = document.getElementById("header-sign-out-btn");
+    const headerAvatar   = document.getElementById("header-avatar");
+    const headerNick     = document.getElementById("header-nickname");
+    const headerRank     = document.getElementById("header-rank");
+
+    if (signedIn) {
+      const profile = ProfileStore.get();
+      const stats   = ProfileStore.getStats();
+
+      if (signInBtn)    signInBtn.style.display    = "none";
+      if (profileBadge) profileBadge.style.display = "flex";
+      if (signOutBtn)   signOutBtn.style.display   = "flex";
+
+      if (headerAvatar && profile) headerAvatar.src = profile.avatar;
+      if (headerNick   && profile) headerNick.textContent = profile.nickname;
+      if (headerRank)              headerRank.textContent  = stats.rank;
+    } else {
+      if (signInBtn)    signInBtn.style.display    = "flex";
+      if (profileBadge) profileBadge.style.display = "none";
+      if (signOutBtn)   signOutBtn.style.display   = "none";
+    }
   },
 
   // --- Hero Slideshow Logic ---
@@ -786,6 +806,23 @@ const App = {
     const container = document.getElementById("app-view");
     if (!container) return;
 
+    // ---- Auth guard: show sign-in prompt if not logged in ----
+    if (!AuthStore.isSignedIn()) {
+      container.innerHTML = `
+        <section class="auth-guard-view">
+          <div class="auth-guard-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h2>Sign in to view your profile</h2>
+          <p>Create a free account to track your reading, leave reviews, and manage your wishlist.</p>
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+            <button class="btn btn-primary" onclick="window.openAuthModal('signup')" style="min-width:160px;">Create Account</button>
+            <button class="btn btn-secondary" onclick="window.openAuthModal('signin')" style="min-width:160px;">Sign In</button>
+          </div>
+        </section>
+      `;
+      return;
+    }
     const profile = ProfileStore.get();
     const stats = ProfileStore.getStats();
     
