@@ -330,8 +330,10 @@ const App = {
         </div>
         
         <div class="search-wrapper">
-          <input type="text" id="search-input" class="search-input" placeholder="Search by title, author, publisher..." aria-label="Book Search">
-          <button class="search-icon-btn" aria-label="Submit search">🔍</button>
+          <input type="text" id="search-input" class="search-input" placeholder="Search title, author, publisher..." aria-label="Book Search">
+          <button class="search-icon-btn" aria-label="Submit search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
         </div>
       </section>
 
@@ -500,9 +502,9 @@ const App = {
     const books = INITIAL_BOOKS.filter(b => wishlistIds.includes(b.id));
 
     container.innerHTML = `
-      <section class="section-header" style="margin-bottom: 2rem;">
-        <h2 style="font-family: var(--font-serif); font-size: 2.2rem;">My Reading Wishlist</h2>
-        <p style="color: var(--text-secondary);">Keep track of Nigerian books you plan to read next.</p>
+      <section class="page-header">
+        <h2 class="page-title">My Reading Wishlist</h2>
+        <p class="page-subtitle">Keep track of Nigerian books you plan to read next.</p>
       </section>
       
       <div class="books-grid" id="wishlist-grid">
@@ -577,8 +579,8 @@ const App = {
     const isReadLogged = ReadLogStore.has(bookId);
 
     container.innerHTML = `
-      <div style="margin-bottom: 1.5rem;">
-        <a href="#home" style="font-weight:600; color:var(--accent-color); display:flex; align-items:center; gap:0.4rem;">
+      <div class="detail-back-link">
+        <a href="#home" class="back-link">
           ← Back to Catalog
         </a>
       </div>
