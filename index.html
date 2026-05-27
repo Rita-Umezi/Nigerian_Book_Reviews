@@ -171,79 +171,79 @@
         <svg width="22" height="22"><use href="#icon-menu"/></svg>
       </button>
     </div>
+  </header>
 
-    <!-- Mobile Drawer Overlay -->
-    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
-    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
-      <div class="mobile-drawer-header">
-        <div class="logo-area" style="gap:0.5rem;">
-          <span class="logo-icon-wrap" style="font-size:1.3rem;">
-            <svg width="20" height="20"><use href="#icon-book"/></svg>
-          </span>
-          <span class="logo-text" style="font-size:1.3rem;">Naija<span class="highlight">Reads</span></span>
-        </div>
-        <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
-          <svg width="18" height="18"><use href="#icon-x"/></svg>
+  <!-- Mobile Drawer Overlay (at body level so position:fixed works correctly) -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="logo-area" style="gap:0.5rem;">
+        <span class="logo-icon-wrap" style="font-size:1.3rem;">
+          <svg width="20" height="20"><use href="#icon-book"/></svg>
+        </span>
+        <span class="logo-text" style="font-size:1.3rem;">Naija<span class="highlight">Reads</span></span>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
+        <svg width="18" height="18"><use href="#icon-x"/></svg>
+      </button>
+    </div>
+
+    <!-- Nav Links -->
+    <nav class="mobile-drawer-nav">
+      <a href="#home" class="mobile-nav-link" id="mobile-nav-home">
+        <svg class="nav-icon" width="18" height="18"><use href="#icon-home"/></svg>
+        Home
+      </a>
+      <a href="#explore" class="mobile-nav-link" id="mobile-nav-explore">
+        <svg class="nav-icon" width="18" height="18"><use href="#icon-explore"/></svg>
+        Explore Books
+      </a>
+      <a href="#wishlist" class="mobile-nav-link" id="mobile-nav-wishlist">
+        <svg class="nav-icon" width="18" height="18"><use href="#icon-wishlist"/></svg>
+        Wishlist
+      </a>
+    </nav>
+
+    <!-- Profile Section -->
+    <div class="mobile-drawer-divider"></div>
+
+    <!-- Signed-in profile row -->
+    <a href="#profile" class="mobile-drawer-profile" id="mobile-drawer-profile-link" style="display:none;">
+      <img src="" alt="Avatar" class="avatar-sm" id="mobile-drawer-avatar">
+      <div class="badge-info">
+        <span class="user-name-abbr" id="mobile-drawer-nickname"></span>
+        <span class="user-rank-badge" id="mobile-drawer-rank"></span>
+      </div>
+      <span class="mobile-drawer-chevron">›</span>
+    </a>
+    <!-- Sign-in row when logged out -->
+    <button class="mobile-drawer-signin-row" id="mobile-sign-in-btn">
+      <svg width="18" height="18"><use href="#icon-profile"/></svg>
+      <span>Sign In / Create Account</span>
+    </button>
+    <!-- Sign-out row -->
+    <button class="mobile-drawer-signout-row" id="mobile-sign-out-btn" style="display:none;">
+      <svg width="18" height="18"><use href="#icon-signout"/></svg>
+      <span>Sign Out</span>
+    </button>
+
+    <!-- Theme Switcher -->
+    <div class="mobile-drawer-divider"></div>
+    <div class="mobile-drawer-theme">
+      <span class="mobile-theme-label">Theme</span>
+      <div class="theme-switcher" id="theme-switcher-mobile">
+        <button class="theme-btn active" data-theme="light" title="Light Mode">
+          <svg width="16" height="16"><use href="#icon-sun"/></svg>
+        </button>
+        <button class="theme-btn" data-theme="editorial" title="Editorial Mode">
+          <svg width="16" height="16"><use href="#icon-editorial"/></svg>
+        </button>
+        <button class="theme-btn" data-theme="dark" title="Dark Mode">
+          <svg width="16" height="16"><use href="#icon-moon"/></svg>
         </button>
       </div>
-
-      <!-- Nav Links -->
-      <nav class="mobile-drawer-nav">
-        <a href="#home" class="mobile-nav-link" id="mobile-nav-home">
-          <svg class="nav-icon" width="18" height="18"><use href="#icon-home"/></svg>
-          Home
-        </a>
-        <a href="#explore" class="mobile-nav-link" id="mobile-nav-explore">
-          <svg class="nav-icon" width="18" height="18"><use href="#icon-explore"/></svg>
-          Explore Books
-        </a>
-        <a href="#wishlist" class="mobile-nav-link" id="mobile-nav-wishlist">
-          <svg class="nav-icon" width="18" height="18"><use href="#icon-wishlist"/></svg>
-          Wishlist
-        </a>
-      </nav>
-
-      <!-- Profile Section -->
-      <div class="mobile-drawer-divider"></div>
-
-      <!-- Signed-in profile row -->
-      <a href="#profile" class="mobile-drawer-profile" id="mobile-drawer-profile-link" style="display:none;">
-        <img src="" alt="Avatar" class="avatar-sm" id="mobile-drawer-avatar">
-        <div class="badge-info">
-          <span class="user-name-abbr" id="mobile-drawer-nickname"></span>
-          <span class="user-rank-badge" id="mobile-drawer-rank"></span>
-        </div>
-        <span class="mobile-drawer-chevron">›</span>
-      </a>
-      <!-- Sign-in row when logged out -->
-      <button class="mobile-drawer-signin-row" id="mobile-sign-in-btn">
-        <svg width="18" height="18"><use href="#icon-profile"/></svg>
-        <span>Sign In / Create Account</span>
-      </button>
-      <!-- Sign-out row -->
-      <button class="mobile-drawer-signout-row" id="mobile-sign-out-btn" style="display:none;">
-        <svg width="18" height="18"><use href="#icon-signout"/></svg>
-        <span>Sign Out</span>
-      </button>
-
-      <!-- Theme Switcher -->
-      <div class="mobile-drawer-divider"></div>
-      <div class="mobile-drawer-theme">
-        <span class="mobile-theme-label">Theme</span>
-        <div class="theme-switcher" id="theme-switcher-mobile">
-          <button class="theme-btn active" data-theme="light" title="Light Mode">
-            <svg width="16" height="16"><use href="#icon-sun"/></svg>
-          </button>
-          <button class="theme-btn" data-theme="editorial" title="Editorial Mode">
-            <svg width="16" height="16"><use href="#icon-editorial"/></svg>
-          </button>
-          <button class="theme-btn" data-theme="dark" title="Dark Mode">
-            <svg width="16" height="16"><use href="#icon-moon"/></svg>
-          </button>
-        </div>
-      </div>
     </div>
-  </header>
+  </div>
 
   <!-- Dynamic Views Container (SPA outlet) -->
   <main class="main-content" id="app-view">
