@@ -117,7 +117,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: background-color var(--transition-normal), color var(--transition-normal);
-  overflow-x: hidden;
+  overflow-x: hidden; /* prevent horizontal scroll from fixed drawer */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -170,9 +170,9 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 16px var(--shadow-color);
+  /* No backdrop-filter — it creates a stacking context trapping fixed children */
+  box-shadow: 0 2px 20px var(--shadow-color);
   transition: background-color var(--transition-normal), border-color var(--transition-normal);
-  backdrop-filter: blur(12px);
 }
 
 .header-container {
@@ -508,11 +508,13 @@ button {
   pointer-events: none;
   transition: opacity var(--transition-normal);
   backdrop-filter: blur(3px);
+  visibility: hidden;
 }
 
 .mobile-drawer-backdrop.open {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
 }
 
 .mobile-drawer {
@@ -525,14 +527,18 @@ button {
   border-left: 1px solid var(--border-color);
   z-index: 201;
   transform: translateX(100%);
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-normal), visibility var(--transition-normal);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+  visibility: hidden;
 }
 
-.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+}
 
 .mobile-drawer-header {
   display: flex;
