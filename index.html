@@ -7,31 +7,127 @@
   <!-- SEO Meta Tags -->
   <meta name="description" content="Explore, rate, and review the finest Nigerian literature. Get custom AI recommendations, preview chapters, and track your reading wishlist.">
   <meta name="keywords" content="Nigerian books, book reviews, Masobe, Farafina, Cassava Republic, Chinua Achebe, Chimamanda Adichie, African literature">
-  <!-- Fonts -->
+  <!-- Fonts: Plus Jakarta Sans (body) + Lora (headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="src/css/index.css">
   <link rel="stylesheet" href="src/css/components.css">
 </head>
 <body>
 
+  <!-- ============================================================
+       SVG Icon Sprite — all nav/UI icons defined here, used via <use>
+       ============================================================ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;" aria-hidden="true">
+    <!-- Home -->
+    <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+      <polyline points="9 21 9 13 15 13 15 21"/>
+    </symbol>
+    <!-- Explore / Compass -->
+    <symbol id="icon-explore" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+    </symbol>
+    <!-- Wishlist / Bookmark Heart -->
+    <symbol id="icon-wishlist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+      <path d="M12 10.5c0-1.1.9-2 2-2s2 .9 2 2-2 3.5-2 3.5-2-2.4-2-3.5z" fill="currentColor" stroke="none" opacity="0.5"/>
+    </symbol>
+    <!-- Profile / User Circle -->
+    <symbol id="icon-profile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+    </symbol>
+    <!-- Sign Out -->
+    <symbol id="icon-signout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+      <polyline points="16 17 21 12 16 7"/>
+      <line x1="21" y1="12" x2="9" y2="12"/>
+    </symbol>
+    <!-- Sun (light theme) -->
+    <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </symbol>
+    <!-- Star (editorial theme) -->
+    <symbol id="icon-editorial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </symbol>
+    <!-- Moon (dark theme) -->
+    <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </symbol>
+    <!-- Send (chat) -->
+    <symbol id="icon-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+    </symbol>
+    <!-- Close X -->
+    <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </symbol>
+    <!-- Book -->
+    <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </symbol>
+    <!-- Sparkle / AI -->
+    <symbol id="icon-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 L13.5 8.5 L19 10 L13.5 11.5 L12 17 L10.5 11.5 L5 10 L10.5 8.5 Z"/>
+      <path d="M5 3 L5.7 5.3 L8 6 L5.7 6.7 L5 9 L4.3 6.7 L2 6 L4.3 5.3 Z" opacity="0.6"/>
+      <path d="M19 15 L19.5 16.5 L21 17 L19.5 17.5 L19 19 L18.5 17.5 L17 17 L18.5 16.5 Z" opacity="0.6"/>
+    </symbol>
+    <!-- Menu (hamburger) -->
+    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+    </symbol>
+    <!-- Lock -->
+    <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </symbol>
+    <!-- Mail -->
+    <symbol id="icon-user-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-dasharray="2 2"/>
+    </symbol>
+  </svg>
+
   <!-- Global Header / Navigation -->
-  <header class="app-header">
+  <header class="app-header" id="app-header">
     <div class="header-container">
       <!-- Logo -->
       <a href="#home" class="logo-area" id="nav-logo">
-        <span class="logo-icon">📚</span>
+        <span class="logo-icon-wrap">
+          <svg width="22" height="22"><use href="#icon-book"/></svg>
+        </span>
         <span class="logo-text">Naija<span class="highlight">Reads</span></span>
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="nav-menu" id="nav-menu">
-        <a href="#home" class="nav-link active" id="nav-link-home">Home</a>
-        <a href="#explore" class="nav-link" id="nav-link-explore">Explore Books</a>
-        <a href="#wishlist" class="nav-link" id="nav-link-wishlist">Wishlist</a>
-        <a href="#profile" class="nav-link" id="nav-link-profile">My Profile</a>
+        <a href="#home" class="nav-link active" id="nav-link-home">
+          <svg class="nav-icon" width="16" height="16"><use href="#icon-home"/></svg>
+          <span>Home</span>
+        </a>
+        <a href="#explore" class="nav-link" id="nav-link-explore">
+          <svg class="nav-icon" width="16" height="16"><use href="#icon-explore"/></svg>
+          <span>Explore</span>
+        </a>
+        <a href="#wishlist" class="nav-link" id="nav-link-wishlist">
+          <svg class="nav-icon" width="16" height="16"><use href="#icon-wishlist"/></svg>
+          <span>Wishlist</span>
+        </a>
+        <a href="#profile" class="nav-link" id="nav-link-profile">
+          <svg class="nav-icon" width="16" height="16"><use href="#icon-profile"/></svg>
+          <span>My Profile</span>
+        </a>
       </nav>
 
       <!-- Desktop Header Actions -->
@@ -39,30 +135,40 @@
         <!-- Theme Toggle Controls -->
         <div class="theme-switcher" id="theme-switcher">
           <button class="theme-btn active" data-theme="light" title="Light Mode" id="theme-btn-light">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg width="16" height="16"><use href="#icon-sun"/></svg>
           </button>
           <button class="theme-btn" data-theme="editorial" title="Editorial Mode" id="theme-btn-editorial">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <svg width="16" height="16"><use href="#icon-editorial"/></svg>
           </button>
           <button class="theme-btn" data-theme="dark" title="Dark Mode" id="theme-btn-dark">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg width="16" height="16"><use href="#icon-moon"/></svg>
           </button>
         </div>
-        <!-- User Profile Quick View -->
-        <a href="#profile" class="header-profile-badge" id="header-profile-badge">
-          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Rita" alt="Avatar" class="avatar-sm" id="header-avatar">
-          <div class="badge-info">
-            <span class="user-name-abbr" id="header-nickname">Rita</span>
-            <span class="user-rank-badge" id="header-rank">Bookie</span>
-          </div>
-        </a>
+
+        <!-- Auth Area: sign-in button OR user badge (toggled by JS) -->
+        <div class="header-auth-area" id="header-auth-area">
+          <!-- Shown when signed OUT -->
+          <button class="sign-in-btn" id="header-sign-in-btn">
+            <svg width="15" height="15"><use href="#icon-profile"/></svg>
+            Sign In
+          </button>
+          <!-- Shown when signed IN -->
+          <a href="#profile" class="header-profile-badge" id="header-profile-badge" style="display:none;">
+            <img src="" alt="Avatar" class="avatar-sm" id="header-avatar">
+            <div class="badge-info">
+              <span class="user-name-abbr" id="header-nickname"></span>
+              <span class="user-rank-badge" id="header-rank"></span>
+            </div>
+          </a>
+          <button class="sign-out-btn" id="header-sign-out-btn" title="Sign Out" style="display:none;">
+            <svg width="16" height="16"><use href="#icon-signout"/></svg>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile: Hamburger Button -->
       <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
-        <span class="ham-bar"></span>
-        <span class="ham-bar"></span>
-        <span class="ham-bar"></span>
+        <svg width="22" height="22"><use href="#icon-menu"/></svg>
       </button>
     </div>
 
@@ -70,27 +176,55 @@
     <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
     <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
       <div class="mobile-drawer-header">
-        <span class="logo-icon" style="font-size:1.6rem;">📚</span>
-        <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">✕</button>
+        <div class="logo-area" style="gap:0.5rem;">
+          <span class="logo-icon-wrap" style="font-size:1.3rem;">
+            <svg width="20" height="20"><use href="#icon-book"/></svg>
+          </span>
+          <span class="logo-text" style="font-size:1.3rem;">Naija<span class="highlight">Reads</span></span>
+        </div>
+        <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
+          <svg width="18" height="18"><use href="#icon-x"/></svg>
+        </button>
       </div>
 
       <!-- Nav Links -->
       <nav class="mobile-drawer-nav">
-        <a href="#home" class="mobile-nav-link" id="mobile-nav-home">🏠 Home</a>
-        <a href="#explore" class="mobile-nav-link" id="mobile-nav-explore">🔍 Explore Books</a>
-        <a href="#wishlist" class="mobile-nav-link" id="mobile-nav-wishlist">❤️ Wishlist</a>
+        <a href="#home" class="mobile-nav-link" id="mobile-nav-home">
+          <svg class="nav-icon" width="18" height="18"><use href="#icon-home"/></svg>
+          Home
+        </a>
+        <a href="#explore" class="mobile-nav-link" id="mobile-nav-explore">
+          <svg class="nav-icon" width="18" height="18"><use href="#icon-explore"/></svg>
+          Explore Books
+        </a>
+        <a href="#wishlist" class="mobile-nav-link" id="mobile-nav-wishlist">
+          <svg class="nav-icon" width="18" height="18"><use href="#icon-wishlist"/></svg>
+          Wishlist
+        </a>
       </nav>
 
       <!-- Profile Section -->
       <div class="mobile-drawer-divider"></div>
-      <a href="#profile" class="mobile-drawer-profile" id="mobile-drawer-profile-link">
-        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Rita" alt="Avatar" class="avatar-sm" id="mobile-drawer-avatar">
+
+      <!-- Signed-in profile row -->
+      <a href="#profile" class="mobile-drawer-profile" id="mobile-drawer-profile-link" style="display:none;">
+        <img src="" alt="Avatar" class="avatar-sm" id="mobile-drawer-avatar">
         <div class="badge-info">
-          <span class="user-name-abbr" id="mobile-drawer-nickname">Rita</span>
-          <span class="user-rank-badge" id="mobile-drawer-rank">Bookie</span>
+          <span class="user-name-abbr" id="mobile-drawer-nickname"></span>
+          <span class="user-rank-badge" id="mobile-drawer-rank"></span>
         </div>
         <span class="mobile-drawer-chevron">›</span>
       </a>
+      <!-- Sign-in row when logged out -->
+      <button class="mobile-drawer-signin-row" id="mobile-sign-in-btn">
+        <svg width="18" height="18"><use href="#icon-profile"/></svg>
+        <span>Sign In / Create Account</span>
+      </button>
+      <!-- Sign-out row -->
+      <button class="mobile-drawer-signout-row" id="mobile-sign-out-btn" style="display:none;">
+        <svg width="18" height="18"><use href="#icon-signout"/></svg>
+        <span>Sign Out</span>
+      </button>
 
       <!-- Theme Switcher -->
       <div class="mobile-drawer-divider"></div>
@@ -98,13 +232,13 @@
         <span class="mobile-theme-label">Theme</span>
         <div class="theme-switcher" id="theme-switcher-mobile">
           <button class="theme-btn active" data-theme="light" title="Light Mode">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg width="16" height="16"><use href="#icon-sun"/></svg>
           </button>
           <button class="theme-btn" data-theme="editorial" title="Editorial Mode">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <svg width="16" height="16"><use href="#icon-editorial"/></svg>
           </button>
           <button class="theme-btn" data-theme="dark" title="Dark Mode">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg width="16" height="16"><use href="#icon-moon"/></svg>
           </button>
         </div>
       </div>
@@ -115,6 +249,88 @@
   <main class="main-content" id="app-view">
     <!-- Renders views dynamically (Home, Details, Profile, Wishlist) -->
   </main>
+
+  <!-- ============================================================
+       AUTH MODAL — Sign In / Sign Up
+       ============================================================ -->
+  <div class="auth-modal" id="auth-modal" aria-hidden="true">
+    <div class="auth-modal-backdrop" id="auth-modal-backdrop"></div>
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+
+      <!-- Close button -->
+      <button class="auth-modal-close" id="auth-modal-close" aria-label="Close">
+        <svg width="18" height="18"><use href="#icon-x"/></svg>
+      </button>
+
+      <!-- Branding -->
+      <div class="auth-brand">
+        <span class="auth-brand-icon"><svg width="28" height="28"><use href="#icon-book"/></svg></span>
+        <h2 class="auth-brand-name" id="auth-modal-title">Naija<span class="highlight">Reads</span></h2>
+        <p class="auth-brand-tagline">Your Nigerian literature companion</p>
+      </div>
+
+      <!-- Tab switcher -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="auth-tab-signin" data-tab="signin">Sign In</button>
+        <button class="auth-tab" id="auth-tab-signup" data-tab="signup">Create Account</button>
+      </div>
+
+      <!-- Error message area -->
+      <div class="auth-error" id="auth-error" style="display:none;"></div>
+
+      <!-- SIGN IN Form -->
+      <form class="auth-form" id="form-signin" autocomplete="off">
+        <div class="auth-field">
+          <label for="signin-nickname">Nickname</label>
+          <div class="auth-input-wrap">
+            <svg width="16" height="16"><use href="#icon-profile"/></svg>
+            <input type="text" id="signin-nickname" placeholder="@your_nickname" autocomplete="username">
+          </div>
+        </div>
+        <div class="auth-field">
+          <label for="signin-password">Password</label>
+          <div class="auth-input-wrap">
+            <svg width="16" height="16"><use href="#icon-lock"/></svg>
+            <input type="password" id="signin-password" placeholder="Your password" autocomplete="current-password">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn" id="btn-do-signin">
+          Sign In to NaijaReads
+        </button>
+        <p class="auth-switch-hint">New here? <button type="button" class="auth-switch-link" data-switch="signup">Create an account →</button></p>
+      </form>
+
+      <!-- SIGN UP Form -->
+      <form class="auth-form" id="form-signup" style="display:none;" autocomplete="off">
+        <div class="auth-field">
+          <label for="signup-name">Display Name</label>
+          <div class="auth-input-wrap">
+            <svg width="16" height="16"><use href="#icon-user-tag"/></svg>
+            <input type="text" id="signup-name" placeholder="e.g. Amara Eze" autocomplete="name">
+          </div>
+        </div>
+        <div class="auth-field">
+          <label for="signup-nickname">Nickname</label>
+          <div class="auth-input-wrap">
+            <svg width="16" height="16"><use href="#icon-profile"/></svg>
+            <input type="text" id="signup-nickname" placeholder="@unique_handle (no spaces)" autocomplete="username">
+          </div>
+        </div>
+        <div class="auth-field">
+          <label for="signup-password">Password</label>
+          <div class="auth-input-wrap">
+            <svg width="16" height="16"><use href="#icon-lock"/></svg>
+            <input type="password" id="signup-password" placeholder="Min. 4 characters" autocomplete="new-password">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn" id="btn-do-signup">
+          Create My Account
+        </button>
+        <p class="auth-switch-hint">Already have an account? <button type="button" class="auth-switch-link" data-switch="signin">Sign in →</button></p>
+      </form>
+
+    </div>
+  </div>
 
   <!-- PDF Snippet / First Chapter e-Reader Modal -->
   <div class="reader-modal" id="reader-modal" aria-hidden="true">
@@ -127,9 +343,11 @@
           <span class="reader-author" id="reader-author">by Author Name</span>
         </div>
         <div class="reader-controls">
-          <button class="control-btn" id="reader-zoom-out" title="Decrease font size">A-</button>
+          <button class="control-btn" id="reader-zoom-out" title="Decrease font size">A−</button>
           <button class="control-btn" id="reader-zoom-in" title="Increase font size">A+</button>
-          <button class="reader-close-btn" id="reader-close-btn" aria-label="Close Reader">✕</button>
+          <button class="reader-close-btn" id="reader-close-btn" aria-label="Close Reader">
+            <svg width="18" height="18"><use href="#icon-x"/></svg>
+          </button>
         </div>
       </div>
       <div class="reader-body" id="reader-body">
@@ -150,7 +368,7 @@
   <div class="ai-chat-widget collapsed" id="ai-chat-widget">
     <!-- Chat Widget Toggle Button -->
     <button class="ai-chat-toggle" id="ai-chat-toggle" aria-label="Toggle AI Book Assistant">
-      <span class="ai-icon">🤖</span>
+      <svg class="ai-icon-svg" width="20" height="20"><use href="#icon-sparkle"/></svg>
       <span class="ai-text">NaijaReads AI</span>
       <span class="pulse-indicator"></span>
     </button>
@@ -159,15 +377,19 @@
     <div class="ai-chat-window">
       <div class="ai-chat-header">
         <div class="ai-chat-title">
-          <span class="ai-avatar">🤖</span>
+          <span class="ai-avatar">
+            <svg width="18" height="18"><use href="#icon-sparkle"/></svg>
+          </span>
           <div>
             <h4>AI Recommender</h4>
             <span class="status-indicator online">Online</span>
           </div>
         </div>
-        <button class="ai-chat-close" id="ai-chat-close" aria-label="Close Chat">✕</button>
+        <button class="ai-chat-close" id="ai-chat-close" aria-label="Close Chat">
+          <svg width="16" height="16"><use href="#icon-x"/></svg>
+        </button>
       </div>
-      
+
       <div class="ai-chat-messages" id="ai-chat-messages">
         <!-- Messages render here -->
       </div>
@@ -175,7 +397,7 @@
       <div class="ai-chat-input-area">
         <input type="text" id="ai-chat-input" placeholder="Ask for a Masobe novel, comedy, drama..." aria-label="AI message input">
         <button id="ai-chat-send" class="send-btn" aria-label="Send message">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          <svg width="16" height="16"><use href="#icon-send"/></svg>
         </button>
       </div>
     </div>
@@ -186,7 +408,7 @@
     <div class="footer-container">
       <div class="footer-brand">
         <h4>Naija<span class="highlight">Reads</span></h4>
-        <p>Celebrating Nigerian writers, publishers, and literature lovers. Review what you read, log your progress, and explore your next favorite book.</p>
+        <p>Celebrating Nigerian writers, publishers, and literature lovers. Review what you read, log your progress, and explore your next favourite book.</p>
       </div>
       <div class="footer-links">
         <h5>Quick Links</h5>
@@ -208,20 +430,22 @@
     </div>
   </footer>
 
-  <!-- App Core JS Modules -->
+  <!-- App Core JS Modules — auth.js must come first -->
+  <script src="src/js/auth.js"></script>
   <script src="src/js/data.js"></script>
   <script src="src/js/store.js"></script>
   <script src="src/js/router.js"></script>
   <script src="src/js/ai-bot.js"></script>
   <script src="src/js/app.js"></script>
 
-  <!-- Mobile Hamburger Menu Logic -->
+  <!-- Mobile Hamburger Menu + Auth Modal Logic -->
   <script>
     (function() {
+      // ---- Mobile Drawer ----
       const hamburgerBtn = document.getElementById('hamburger-btn');
-      const drawer = document.getElementById('mobile-drawer');
-      const backdrop = document.getElementById('mobile-drawer-backdrop');
-      const closeBtn = document.getElementById('mobile-drawer-close');
+      const drawer       = document.getElementById('mobile-drawer');
+      const backdrop     = document.getElementById('mobile-drawer-backdrop');
+      const closeBtn     = document.getElementById('mobile-drawer-close');
 
       function openDrawer() {
         drawer.classList.add('open');
@@ -230,7 +454,6 @@
         drawer.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }
-
       function closeDrawer() {
         drawer.classList.remove('open');
         backdrop.classList.remove('open');
@@ -242,26 +465,121 @@
       hamburgerBtn.addEventListener('click', openDrawer);
       closeBtn.addEventListener('click', closeDrawer);
       backdrop.addEventListener('click', closeDrawer);
+      drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
 
-      // Close drawer on any nav link click
-      drawer.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', closeDrawer);
+      // ---- Auth Modal ----
+      const authModal    = document.getElementById('auth-modal');
+      const authBackdrop = document.getElementById('auth-modal-backdrop');
+      const authClose    = document.getElementById('auth-modal-close');
+      const formSignin   = document.getElementById('form-signin');
+      const formSignup   = document.getElementById('form-signup');
+      const authError    = document.getElementById('auth-error');
+      const tabSignin    = document.getElementById('auth-tab-signin');
+      const tabSignup    = document.getElementById('auth-tab-signup');
+
+      function openAuthModal(tab) {
+        authModal.classList.add('active');
+        authModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        clearAuthError();
+        switchAuthTab(tab || 'signin');
+      }
+      function closeAuthModal() {
+        authModal.classList.remove('active');
+        authModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      function showAuthError(msg) {
+        authError.textContent = msg;
+        authError.style.display = 'block';
+      }
+      function clearAuthError() {
+        authError.textContent = '';
+        authError.style.display = 'none';
+      }
+      function switchAuthTab(tab) {
+        clearAuthError();
+        if (tab === 'signin') {
+          formSignin.style.display = '';
+          formSignup.style.display = 'none';
+          tabSignin.classList.add('active');
+          tabSignup.classList.remove('active');
+        } else {
+          formSignin.style.display = 'none';
+          formSignup.style.display = '';
+          tabSignup.classList.add('active');
+          tabSignin.classList.remove('active');
+        }
+      }
+
+      tabSignin.addEventListener('click', () => switchAuthTab('signin'));
+      tabSignup.addEventListener('click', () => switchAuthTab('signup'));
+      authClose.addEventListener('click', closeAuthModal);
+      authBackdrop.addEventListener('click', closeAuthModal);
+
+      // Switch links inside forms
+      document.querySelectorAll('.auth-switch-link').forEach(btn => {
+        btn.addEventListener('click', () => switchAuthTab(btn.dataset.switch));
       });
 
-      // Sync mobile drawer theme switcher with app theme system
+      // Trigger modal from header buttons
+      document.getElementById('header-sign-in-btn').addEventListener('click', () => openAuthModal('signin'));
+      document.getElementById('mobile-sign-in-btn').addEventListener('click', () => { closeDrawer(); openAuthModal('signin'); });
+
+      // Sign Out buttons
+      function doSignOut() {
+        AuthStore.signOut();
+        closeDrawer();
+        window.location.hash = '#home';
+      }
+      document.getElementById('header-sign-out-btn').addEventListener('click', doSignOut);
+      document.getElementById('mobile-sign-out-btn').addEventListener('click', doSignOut);
+
+      // Sign In form submit
+      formSignin.addEventListener('submit', function(e) {
+        e.preventDefault();
+        clearAuthError();
+        const nick = document.getElementById('signin-nickname').value.trim();
+        const pw   = document.getElementById('signin-password').value;
+        const result = AuthStore.signIn(nick, pw);
+        if (result.success) {
+          initStore(); // re-seed this user's store
+          closeAuthModal();
+          if (window.App) App.updateHeaderProfile();
+        } else {
+          showAuthError(result.error);
+        }
+      });
+
+      // Sign Up form submit
+      formSignup.addEventListener('submit', function(e) {
+        e.preventDefault();
+        clearAuthError();
+        const name = document.getElementById('signup-name').value.trim();
+        const nick = document.getElementById('signup-nickname').value.trim();
+        const pw   = document.getElementById('signup-password').value;
+        const result = AuthStore.signUp(name, nick, pw);
+        if (result.success) {
+          initStore();
+          closeAuthModal();
+          if (window.App) App.updateHeaderProfile();
+        } else {
+          showAuthError(result.error);
+        }
+      });
+
+      // ---- Mobile drawer theme switcher sync ----
       const mobileThemeSwitcher = document.getElementById('theme-switcher-mobile');
       if (mobileThemeSwitcher) {
         mobileThemeSwitcher.querySelectorAll('.theme-btn').forEach(function(btn) {
           btn.addEventListener('click', function() {
             const theme = btn.getAttribute('data-theme');
-            // Reuse App's setTheme if available, else set directly
             if (window.App && App.setTheme) {
               App.setTheme(theme);
             } else {
               document.documentElement.setAttribute('data-theme', theme);
               localStorage.setItem('naijareads_theme', theme);
             }
-            // Sync active states across both switchers
             document.querySelectorAll('.theme-switcher .theme-btn').forEach(function(b) {
               b.classList.toggle('active', b.getAttribute('data-theme') === theme);
             });
@@ -269,23 +587,41 @@
         });
       }
 
-      // Sync mobile drawer profile info with main header
+      // ---- Sync mobile drawer profile info ----
       function syncMobileDrawerProfile() {
         const mainAvatar = document.getElementById('header-avatar');
-        const mainNick = document.getElementById('header-nickname');
-        const mainRank = document.getElementById('header-rank');
+        const mainNick   = document.getElementById('header-nickname');
+        const mainRank   = document.getElementById('header-rank');
         const drawerAvatar = document.getElementById('mobile-drawer-avatar');
-        const drawerNick = document.getElementById('mobile-drawer-nickname');
-        const drawerRank = document.getElementById('mobile-drawer-rank');
-        if (mainAvatar && drawerAvatar) drawerAvatar.src = mainAvatar.src;
-        if (mainNick && drawerNick) drawerNick.textContent = mainNick.textContent;
-        if (mainRank && drawerRank) drawerRank.textContent = mainRank.textContent;
+        const drawerNick   = document.getElementById('mobile-drawer-nickname');
+        const drawerRank   = document.getElementById('mobile-drawer-rank');
+
+        const signedIn = AuthStore.isSignedIn();
+        const profileLink   = document.getElementById('mobile-drawer-profile-link');
+        const mobileSignIn  = document.getElementById('mobile-sign-in-btn');
+        const mobileSignOut = document.getElementById('mobile-sign-out-btn');
+
+        if (signedIn) {
+          if (mainAvatar && drawerAvatar) drawerAvatar.src = mainAvatar.src;
+          if (mainNick   && drawerNick)   drawerNick.textContent  = mainNick.textContent;
+          if (mainRank   && drawerRank)   drawerRank.textContent  = mainRank.textContent;
+          if (profileLink)  profileLink.style.display  = 'flex';
+          if (mobileSignIn) mobileSignIn.style.display  = 'none';
+          if (mobileSignOut) mobileSignOut.style.display = 'flex';
+        } else {
+          if (profileLink)  profileLink.style.display  = 'none';
+          if (mobileSignIn) mobileSignIn.style.display  = 'flex';
+          if (mobileSignOut) mobileSignOut.style.display = 'none';
+        }
       }
 
-      // Sync on load and whenever profile is updated
       window.addEventListener('profile-updated', syncMobileDrawerProfile);
       window.addEventListener('read-log-updated', syncMobileDrawerProfile);
-      setTimeout(syncMobileDrawerProfile, 500);
+      window.addEventListener('auth-changed', syncMobileDrawerProfile);
+      setTimeout(syncMobileDrawerProfile, 600);
+
+      // Expose openAuthModal globally for app.js to use
+      window.openAuthModal = openAuthModal;
     })();
   </script>
 </body>
