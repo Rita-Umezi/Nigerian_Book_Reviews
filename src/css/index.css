@@ -909,9 +909,10 @@ button {
 .auth-switch-link:hover { opacity: 0.75; }
 
 /* ================================================================
-   RESPONSIVE
+   RESPONSIVE — TABLET (≤ 768px)
    ================================================================ */
 @media (max-width: 768px) {
+  /* Header */
   .hamburger-btn          { display: flex; }
   .nav-menu               { display: none; }
   #header-actions-desktop { display: none; }
@@ -920,18 +921,81 @@ button {
     flex-wrap: nowrap;
     justify-content: space-between;
     padding: 0 1rem;
+    height: 56px;
   }
 
+  .logo-text { font-size: 1.3rem; }
+  .logo-icon-wrap { width: 30px; height: 30px; border-radius: 8px; }
+
+  /* Main content */
+  .main-content {
+    padding: 1rem 0.9rem 5rem;
+  }
+
+  /* Footer */
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
-  .main-content {
-    padding: 1rem 1rem 4rem;
+  .app-footer {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  /* Auth modal */
+  .auth-modal {
+    align-items: flex-end;
+    padding: 0;
   }
 
   .auth-modal-card {
-    padding: 2rem 1.5rem 1.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    padding: 2rem 1.5rem 2rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .auth-modal.active .auth-modal-card {
+    transform: translateY(0) scale(1);
+  }
+
+  /* Auth brand compact */
+  .auth-brand {
+    margin-bottom: 1.25rem;
+  }
+
+  .auth-brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .auth-brand-name { font-size: 1.35rem; }
+  .auth-brand-tagline { font-size: 0.8rem; }
+
+  /* Toast — bottom-right instead of bottom-left on mobile */
+  .toast-container {
+    bottom: 5.5rem;
+    left: 1rem;
+    right: 1rem;
+    align-items: stretch;
+  }
+
+  .toast {
+    width: 100%;
+    max-width: 100%;
   }
 }
+
+/* ================================================================
+   RESPONSIVE — MOBILE (≤ 600px)
+   ================================================================ */
+@media (max-width: 600px) {
+  /* Modal slides up from bottom as a sheet */
+  .auth-modal-card {
+    padding: 1.75rem 1.25rem 1.75rem;
+  }
+}
+
